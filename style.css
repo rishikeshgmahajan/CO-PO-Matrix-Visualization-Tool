@@ -45,21 +45,21 @@
 }
 .form-grp label{
     display: block;
-    font-size: 14px;
-    color: #1e3a8a;
+    font-size: 20px;
+    color: #78141E;
     font-weight: bold;
     margin-bottom: 8px;
 }
 .form-inp{
    width: 100%;
     padding: 10px 14px;
-    font-size: 15px;
+    font-size: 20px;
     color: #4a5568;
     background-color: #f8fafc; 
     border: 1px solid #e2e8f0;  
     border-radius: 6px;
     outline: none;
-    cursor: pointer;
+    cursor: text;
     appearance: none;
 }
 .form-inp:focus {

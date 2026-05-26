@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CO-PO MAPPING</title>
+    <link rel="stylesheet" href="style.css">
     <style>
         * {
             margin: 0;
@@ -159,6 +160,44 @@
             </div>
         </div>
     </header>
+    <section class="filter-section">
+        <div class="filter-container">
+
+            <div class="form-grp">
+                <label for="courseCode">Course Code</label>
+                <select id="courseCode" class="form-inp">
+                    <option disabled selected>-- Import Syllabus First --</option>
+                    <option>CO101</option>
+                    <option>PO202</option>
+                </select>
+            </div>
+
+            <div class="form-grp">
+                <label for="courseTitle">Subject / Course Title</label>
+                <select id="courseTitle" class="form-inp">
+                    <option disabled selected>-- Import Syllabus First --</option>
+                    <option>Data Structures & Algorithms</option>
+                    <option>Database Management Systems</option>
+                </select>
+            </div>
+
+            <div class="form-grp">
+                <label for="instructor">Faculty Instructor</label>
+                <input type="text" id="instructor" class="form-inp" placeholder="e.g., Dr. Smith">
+            </div>
+
+            <div class="form-grp">
+                <label for="semester">Academic Year / Semester</label>
+                <select id="semester" class="form-inp">
+                    <option>First Year (Sem 1 & 2)</option>
+                    <option>Second Year (Sem 3 & 4)</option>
+                    <option>Third Year (Sem 5 & 6)</option>
+                    <option>Fourth Year (Sem 7 & 8)</option>
+                </select>
+            </div>
+
+        </div>
+    </section>
 
     <div style="background-color: #f8f9fa; height: 100vh; padding: 40px;">
         <p style="margin-top: 10px; color: #555;"></p>

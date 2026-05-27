@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CO-PO MAPPING</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="design-tokens.css">
     <style>
         * {
             margin: 0;
@@ -13,6 +14,8 @@
             font-family: Arial, sans-serif;
         }
     </style>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
 </head>
 <body>
     <div id="mainSidebar" class="sidebar-drawer">
@@ -41,6 +44,9 @@
         <div class="filter-container">
 
             <div class="form-grp">
+                <button class="btn btn-primary" data-tippy-content="Click and upload syllabus pdf to parse the syllabus with AI to automatically input CO, PO, and PSO.">AI Parse Syllabus</button>
+            </div>
+            <div class="form-grp">
                 <label for="courseCode">Course Code</label>
                 <input type ="text" id="Code" class="form-inp" placeholder="e.g., 16U53G82">
             </div>
@@ -67,7 +73,41 @@
 
         </div>
     </section>
-    
+
+    <section class="matrix-section">
+        <div class="matrix-container">
+            <div class="col-item outcome-entry">
+                <div class="tab-headers">
+                    <button class="tab-link active" data-tab="co-mapping">COs</button>
+                    <button class="tab-link" data-tab="po-mapping">POs</button>
+                    <button class="tab-link" data-tab="analytics">PSOs</button>
+                </div>
+
+                <div class="tab-body">
+                    <div id="co-mapping" class="tab-pane active">
+                        <h3>Course Outcomes</h3>
+                        <p>Configure your CO details and targets here.</p>
+                    </div>
+                    <div id="po-mapping" class="tab-pane">
+                        <h3>Program Outcomes</h3>
+                        <p>Map your Course Outcomes to the Program Outcomes.</p>
+                    </div>
+                    <div id="analytics" class="tab-pane">
+                        <h3>Program Specific Outcomes</h3>
+                        <p>View attainment charts and breakdown reports.</p>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="col-item outcome-mapping">
+                <h3>Column 2</h3>
+                <p>This is your second content block.</p>
+            </div>
+        </div>
+    </section>
     
 </body>
+
+    <script src="script.js" defer></script>
+
 </html>

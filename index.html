@@ -12,129 +12,6 @@
             box-sizing: border-box;
             font-family: Arial, sans-serif;
         }
-        .site-header {
-            background-color: #ffffff;
-            padding: 10px 24px;
-            width: 100%;
-            position: relative;
-            z-index: 1000;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08),
-                        0 1px 3px rgba(0, 0, 0, 0.05);
-        }
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        .left-logo-grp {
-            display: flex;
-            align-items: center;
-            gap: 80px;
-        }
-        .sidebar-button {
-            background: none;
-            border: none;
-            font-size: 28px;
-            color: #333333;
-            text-decoration: none;
-            cursor: pointer;
-            padding: 5px 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: color 0.2s ease;
-            margin-left: -70px;
-        }
-        .sidebar-button:hover {
-            color: #a30000; 
-        }
-        .logo-main {
-            height: 70px;
-            width: auto;
-            display: block;
-        }
-        .logo-trust {
-            height: 70px;
-            width: auto;
-            display: block;
-        }
-        .sidebar-drawer {
-            position: fixed;
-            top: 0;
-            left: -380px; 
-            width: 380px;
-            height: 100%;
-            background-color: #2d3748;
-            z-index: 2000; 
-            transition: left 0.3s ease-in-out; 
-            box-shadow: 4px 0 15px rgba(0, 0, 0, 0.3);
-            padding: 24px;
-        }
-        .sidebar-drawer:target {
-            left: 0;
-        }
-        .sidebar-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-            border-bottom: 1px solid #333333;
-            padding-bottom: 15px;
-        }
-        .sidebar-title {
-            color: #ffffff;
-            font-size: 18px;
-            font-weight: bold;
-        }
-        .sidebar-close-btn {
-            color: #aaaaaa;
-            text-decoration: none;
-            font-size: 26px;
-            font-weight: bold;
-            line-height: 1;
-        }
-        .sidebar-close-btn:hover {
-            color: #ffffff;
-        }
-        .sidebar-menu {
-            list-style: none;
-        }
-        .sidebar-menu li {
-            margin-bottom: 15px;
-        }
-        .sidebar-menu li a {
-            color: #dddddd;
-            text-decoration: none;
-            font-size: 16px;
-            display: block;
-            padding: 10px 12px;
-            border-radius: 4px;
-            transition: background 0.2s ease;
-        }
-        .sidebar-menu li a:hover {
-            background-color: #a30000; 
-            color: #ffffff;
-        }
-        .sidebar-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.4);
-            z-index: 1500;
-            display: none;
-        }
-        .sidebar-drawer:target ~ .sidebar-overlay {
-            display: block;
-        }
-        @media (max-width: 768px) {
-            .logo-main { height: 40px; }
-            .logo-trust { height: 45px; }
-            .hide-on-mobile { display: none; }
-        }
     </style>
 </head>
 <body>
@@ -152,11 +29,11 @@
         <div class="header-container">
             <div class="left-logo-grp">
                 <a href="#mainSidebar" class="sidebar-button">&#9776;</a>
-                <img src="images/svu.png" alt="Somaiya Vidyavihar University" class="logo-main">
-                <img src="images/kjsse.png" alt="Somaiya Vidyavihar" class="logo-main hide-on-mobile">  
+                <img src="images/svu.png" alt="Somaiya Vidyavihar University" class="logo">
+                <img src="images/kjsse.png" alt="Somaiya Vidyavihar" class="logo hide-on-mobile">  
             </div>
             <div class="right-logo-group">
-                <img src="images/trust.png" alt="Somaiya Trust" class="logo-trust">    
+                <img src="images/trust.png" alt="Somaiya Trust" class="logo">    
             </div>
         </div>
     </header>
@@ -190,10 +67,6 @@
 
         </div>
     </section>
-
-    <div style="background-color: #f8f9fa; height: 100vh; padding: 40px;">
-        <p style="margin-top: 10px; color: #555;"></p>
-    </div>
     
     
 </body>

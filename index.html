@@ -80,21 +80,27 @@
                 <div class="tab-headers">
                     <button class="tab-link active" data-tab="co-mapping">COs</button>
                     <button class="tab-link" data-tab="po-mapping">POs</button>
-                    <button class="tab-link" data-tab="analytics">PSOs</button>
+                    <button class="tab-link" data-tab="pso-mapping">PSOs</button>
                 </div>
 
                 <div class="tab-body">
                     <div id="co-mapping" class="tab-pane active">
-                        <h3>Course Outcomes</h3>
-                        <p>Configure your CO details and targets here.</p>
+                        <div class="action-buttons">
+                            <button class="btn btn-success" id="add-co-btn" onclick="addCO()"><img class="action-btn-icon" src="images/addO.png" alt="Add CO"> Add CO</button>
+                            <button class="btn btn-danger" id="delete-co-btn" onclick="deleteLastCO()"><img class="action-btn-icon" src="images/delO.png" alt="Delete CO"> Delete CO</button>
+                        </div>
                     </div>
                     <div id="po-mapping" class="tab-pane">
-                        <h3>Program Outcomes</h3>
-                        <p>Map your Course Outcomes to the Program Outcomes.</p>
+                        <div class="action-buttons">
+                            <button class="btn btn-success" id="add-po-btn" onclick="addPO()"><img class="action-btn-icon" src="images/addO.png" alt="Add PO"> Add PO</button>
+                            <button class="btn btn-danger" id="delete-po-btn" onclick="deleteLastPO()"><img class="action-btn-icon" src="images/delO.png" alt="Delete PO"> Delete PO</button>
+                        </div>
                     </div>
-                    <div id="analytics" class="tab-pane">
-                        <h3>Program Specific Outcomes</h3>
-                        <p>View attainment charts and breakdown reports.</p>
+                    <div id="pso-mapping" class="tab-pane">
+                        <div class="action-buttons">
+                            <button class="btn btn-success" id="add-pso-btn" onclick="addPSO()"><img class="action-btn-icon" src="images/addO.png" alt="Add PSO"> Add PSO</button>
+                            <button class="btn btn-danger" id="delete-pso-btn" onclick="deleteLastPSO()"><img class="action-btn-icon" src="images/delO.png" alt="Delete PSO"> Delete PSO</button>
+                        </div>
                     </div>
                 </div>
                 

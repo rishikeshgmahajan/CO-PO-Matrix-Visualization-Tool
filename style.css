@@ -261,7 +261,7 @@ html, body {
     left: -380px; 
     width: 380px;
     height: 100%;
-    background-color: var(--color-border-active);
+    background-color: #3d4957;
     z-index: 2000; 
     transition: left 0.3s ease-in-out; 
     box-shadow: 4px 0 15px rgba(0, 0, 0, 0.3);
@@ -359,7 +359,8 @@ html, body {
     min-height: 0;
 }
 .outcome-entry {
-    flex: 0 0 30%;
+    max-width: 600px;
+    flex: 0 0 400px; 
 }
 .outcome-mapping {
     flex: 1;
@@ -478,12 +479,15 @@ html, body {
     .matrix-container {
         flex-direction: column;
     }
-    .outcome-entry, .outcome-mapping {
+    .outcome-entry{
+        flex: 0 1 auto;
+    }
+    
+    .outcome-mapping {
         flex: 1 1 100%;
-        max-height: 500px;
     }
     #co-mapping, #po-mapping, #pso-mapping {
-        max-height: 350px;
+        max-height: 800px;
         overflow-y: auto;
     }
 
@@ -499,6 +503,6 @@ html, body {
     padding: 0.625rem 0.875rem;
     background-color: var(--color-background);
     box-sizing: border-box;
-}
+    }
 }
 

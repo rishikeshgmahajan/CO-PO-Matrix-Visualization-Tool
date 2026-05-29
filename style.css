@@ -213,7 +213,7 @@ html, body {
     border-color: var(--color-primary);
 }
 .site-header {
-    background-color: #ffffff;
+    background-color: var(--color-surface);
     padding: 10px 24px;
     width: 100%;
     position: relative;
@@ -261,7 +261,7 @@ html, body {
     left: -380px; 
     width: 380px;
     height: 100%;
-    background-color: #2d3748;
+    background-color: var(--color-border-active);
     z-index: 2000; 
     transition: left 0.3s ease-in-out; 
     box-shadow: 4px 0 15px rgba(0, 0, 0, 0.3);

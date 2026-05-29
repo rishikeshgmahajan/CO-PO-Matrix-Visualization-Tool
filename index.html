@@ -78,9 +78,9 @@
         <div class="matrix-container">
             <div class="col-item outcome-entry">
                 <div class="tab-headers">
-                    <button class="tab-link active" data-tab="co-mapping">COs</button>
-                    <button class="tab-link" data-tab="po-mapping">POs</button>
-                    <button class="tab-link" data-tab="pso-mapping">PSOs</button>
+                    <button class="tab-link active" data-tab="co-mapping">COs  <span id="co-count" class="o-count badge badge-primary">0</span></button>
+                    <button class="tab-link" data-tab="po-mapping">POs  <span id="po-count" class="o-count badge badge-primary">0</span></button>
+                    <button class="tab-link" data-tab="pso-mapping">PSOs  <span id="pso-count" class="o-count badge badge-primary">0</span></button>
                 </div>
 
                 <div class="tab-body">
@@ -89,18 +89,21 @@
                             <button class="btn btn-success" id="add-co-btn" onclick="addCO()"><img class="action-btn-icon" src="images/addO.png" alt="Add CO"> Add CO</button>
                             <button class="btn btn-danger" id="delete-co-btn" onclick="deleteLastCO()"><img class="action-btn-icon" src="images/delO.png" alt="Delete CO"> Delete CO</button>
                         </div>
+                        <div id="co-mapping-list"></div>
                     </div>
                     <div id="po-mapping" class="tab-pane">
                         <div class="action-buttons">
                             <button class="btn btn-success" id="add-po-btn" onclick="addPO()"><img class="action-btn-icon" src="images/addO.png" alt="Add PO"> Add PO</button>
                             <button class="btn btn-danger" id="delete-po-btn" onclick="deleteLastPO()"><img class="action-btn-icon" src="images/delO.png" alt="Delete PO"> Delete PO</button>
                         </div>
+                        <div id="po-mapping-list"></div>
                     </div>
                     <div id="pso-mapping" class="tab-pane">
                         <div class="action-buttons">
                             <button class="btn btn-success" id="add-pso-btn" onclick="addPSO()"><img class="action-btn-icon" src="images/addO.png" alt="Add PSO"> Add PSO</button>
                             <button class="btn btn-danger" id="delete-pso-btn" onclick="deleteLastPSO()"><img class="action-btn-icon" src="images/delO.png" alt="Delete PSO"> Delete PSO</button>
                         </div>
+                        <div id="pso-mapping-list"></div>
                     </div>
                 </div>
                 

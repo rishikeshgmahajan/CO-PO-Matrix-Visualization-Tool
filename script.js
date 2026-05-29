@@ -31,7 +31,8 @@ function addCO() {
                         </div>
                         <textarea class='form-control' placeholder='Enter CO description...'></textarea>
                     </div>`;
-    document.getElementById("co-mapping").insertAdjacentHTML("beforeend", coBoxHTML);
+    document.getElementById("co-mapping-list").insertAdjacentHTML("beforeend", coBoxHTML);
+    document.getElementById("co-count").textContent = coCount;
 }
 
 function addPO() {
@@ -42,7 +43,8 @@ function addPO() {
                         </div>
                         <textarea class='form-control' placeholder='Enter PO description...'></textarea>
                     </div>`;
-    document.getElementById("po-mapping").insertAdjacentHTML("beforeend", poBoxHTML);
+    document.getElementById("po-mapping-list").insertAdjacentHTML("beforeend", poBoxHTML);
+    document.getElementById("po-count").textContent = poCount;
 }
 
 function addPSO() {
@@ -53,7 +55,8 @@ function addPSO() {
                         </div>
                         <textarea class='form-control' placeholder='Enter PSO description...'></textarea>
                     </div>`;
-    document.getElementById("pso-mapping").insertAdjacentHTML("beforeend", psoBoxHTML);
+    document.getElementById("pso-mapping-list").insertAdjacentHTML("beforeend", psoBoxHTML);
+    document.getElementById("pso-count").textContent = psoCount;
 }
 
 function deleteLastCO() {
@@ -61,6 +64,7 @@ function deleteLastCO() {
         document.getElementById(`co-${coCount}`).remove();
         coCount--;
     }
+    document.getElementById("co-count").textContent = coCount;
 }
 
 function deleteLastPO() {
@@ -68,6 +72,7 @@ function deleteLastPO() {
         document.getElementById(`po-${poCount}`).remove();
         poCount--;
     }
+    document.getElementById("po-count").textContent = poCount;
 }
 
 function deleteLastPSO() {
@@ -75,4 +80,5 @@ function deleteLastPSO() {
         document.getElementById(`pso-${psoCount}`).remove();
         psoCount--;
     }
+    document.getElementById("pso-count").textContent = psoCount;
 }

@@ -91,9 +91,9 @@ function Matrix() {
     const COCount = document.querySelectorAll('.control-panel-card textarea, [id^="CO"], .co-card').length ||3;
     const POCount = document.querySelectorAll('po-card, .po-input-group').length || 12;
     const PSOCount = document.querySelectorAll('pso-card, .pso-input-group').length || 3;
-    Row1.innerHTML = '<th rowspan="2" class="sticky-col col-co-heading">Course Outcomes</th>';\
+    Row1.innerHTML = '<th rowspan="2" class="sticky-col col-co-heading">Course Outcomes</th>';
     Row2.innerHTML = '';
-    Body.innerHTML = '';
+    body.innerHTML = '';
 
     if(POCount >0){
         const POHeader = document.createElement("th");

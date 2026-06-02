@@ -521,3 +521,85 @@ html, body {
    font-size: var(--fs-sm);
    font-family: var(--font-body); 
 }
+.mapping-matrix th{
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: var(--color-surface-hover);
+    color: var(--color-text-primary);
+    font-weight: var(--fw-bold);
+    padding: 10px;
+    border: 1px solid var(--color-border);
+    white-space: nowrap;
+    font-family: var(--font-headings);
+}
+.mapping-matrix tr:first-child th {
+    top: 0;
+    z-index: 15;
+}
+.mapping-matrix tr:nth-child(2) th{
+    top: 39px;
+    z-index: 15;
+}
+.mapping-matrix th.po-heading {
+    background-color: var(--color-surface-active);
+}
+.mapping-matrix th.pso-heading {
+    background-color: var(--color-secondary-soft);
+    color: var(--color-secondary-active);
+}
+.mapping-matrix td {
+    padding: 6px;
+    border: 1px solid var(--color-border);
+    vertical-align: middle;
+}
+.mapping-matrix tbody tr:nth-child(even) {
+    background-color: var(--color-background);
+}
+.mapping-matrix .sticky-col {
+    position: sticky;
+    left: 0;
+    background-color: var(--color-surface) !important;
+    z-index: 15 !important;
+    border-right: 2px solid var(--color-border) !important;
+    box-shadow: var(--shadow-sm);
+}
+.mapping-matrix tbody tr:nth-child(even) .sticky-col {
+    background-color: var(--color-background) !important;
+}
+.col-co-heading, .co-label-cell {
+    min-width: 80px;
+    font-weight: var(--fw-bold);
+    color: var(--color-primary-active);
+}
+.matrix-select {
+    width: 44px;
+    height: 36px;
+    text-align: center;
+    text-align-last: center;
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-bold);
+    color: var(--color-text-secondary);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    outline: none;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    transition: all var(--transition-fast);
+}
+.matrix-select:hover {
+    border-color: var(--color-primary-active);
+    background-color: var(--color-surface-hover);
+}
+.matrix-select.has-value {
+    background-color: var(--color-success-soft) !important;
+    border-color: var(--color-success-border) !important;
+    color: var(--color-success) !important;
+}
+.matrix-select option {
+    background-color: var(--color-surface);
+    color: var(--color-text-primary);
+    font-weight: var(--fw-bold);
+}

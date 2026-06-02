@@ -573,7 +573,7 @@ html, body {
     color: var(--color-primary-active);
 }
 .matrix-select {
-    width: 44px;
+    width: 100%;
     height: 36px;
     text-align: center;
     text-align-last: center;

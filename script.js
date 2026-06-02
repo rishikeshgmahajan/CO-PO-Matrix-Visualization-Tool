@@ -164,19 +164,19 @@ function matrixBox() {
         row.innerHTML = rowHTML;
         tableBody.appendChild(row);
     }
-
-    document.querySelectorAll(".matrix-select").forEach(select => {
-        if (select.value !== "") {
-            styleActiveCell(select);
-        }
-    });
 }
-
 function styleActiveCell(selectElement) {
-    selectElement.classList.remove("has-value", "val-1", "val-2", "val-3");
+    selectElement.classList.remove("val-1", "val-2", "val-3");
 
     if (selectElement.value !== "") {
-        selectElement.classList.add("has-value");
-        selectElement.classList.add(`val-${selectElement.value}`);
+        if (selectElement.value === "1") {
+            selectElement.classList.add("val-1");
+        } else if (selectElement.value === "2") {
+            selectElement.classList.add("val-2");
+        } else if (selectElement.value === "3") {
+            selectElement.classList.add("val-3");
+        }
     }
 }
+
+

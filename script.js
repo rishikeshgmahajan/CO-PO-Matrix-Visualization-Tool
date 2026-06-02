@@ -89,17 +89,28 @@ function deleteLastPSO() {
     document.getElementById("pso-count").textContent = psoCount;
     matrixBox();
 }
+
 function matrixBox() {
-    const tableHeadRow1 = document.getElementById("matrixHeadRow1")
-    const tableHeadRow2 = document.getElementById("matrixHeadRow2")
-    const tableBody = document.getElementById("matrixBody")
+    const tableHeadRow1 = document.getElementById("matrixHeadRow1");
+    const tableHeadRow2 = document.getElementById("matrixHeadRow2");
+    const tableBody = document.getElementById("matrixBody");
 
     if(!tableHeadRow1 || !tableHeadRow2 || !tableBody) return;
+
+    const savedValues = {};
+    document.querySelectorAll(".matrix-select").forEach(select => {
+        const co = select.getAttribute("data-co");
+        const col = select.getAttribute("data-col");
+        if (co && col) {
+            savedValues[`${co}-${col}`] = select.value;
+        }
+    });
+
     tableHeadRow1.innerHTML = '<th rowspan="2" class="sticky-col col-co-heading">Course Outcomes</th>';
     tableHeadRow2.innerHTML = '';
     tableBody.innerHTML = '';
 
-    if(poCount>0){
+    if (poCount > 0) {
         const poHeader = document.createElement("th");
         poHeader.setAttribute("colspan", poCount);
         poHeader.className = "group-heading po-group-heading";
@@ -108,9 +119,10 @@ function matrixBox() {
 
         for (let i = 1; i <= poCount; i++) {
             tableHeadRow2.innerHTML += `<th>PO${i}</th>`;
+        }
     }
-}
-if (psoCount > 0) {
+    
+    if (psoCount > 0) {
         const psoHeader = document.createElement("th");
         psoHeader.setAttribute("colspan", psoCount);
         psoHeader.className = "group-heading pso-group-heading";
@@ -121,6 +133,7 @@ if (psoCount > 0) {
             tableHeadRow2.innerHTML += `<th>PSO${i}</th>`;
         }
     }
+    
     const totalColumns = poCount + psoCount;
 
     for (let r = 1; r <= coCount; r++) {
@@ -133,13 +146,16 @@ if (psoCount > 0) {
         `;
 
         for (let c = 1; c <= totalColumns; c++) {
+            const cellKey = `${r}-${c}`;
+            const savedVal = savedValues[cellKey] || "";
+
             rowHTML += `
                 <td>
-                    <select class="matrix-select" onchange="styleActiveCell(this)">
-                        <option value="" selected>-</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
+                    <select class="matrix-select" data-co="${r}" data-col="${c}" onchange="styleActiveCell(this)">
+                        <option value="" ${savedVal === "" ? "selected" : ""}>-</option>
+                        <option value="1" ${savedVal === "1" ? "selected" : ""}>1</option>
+                        <option value="2" ${savedVal === "2" ? "selected" : ""}>2</option>
+                        <option value="3" ${savedVal === "3" ? "selected" : ""}>3</option>
                     </select>
                 </td>
             `;
@@ -148,12 +164,19 @@ if (psoCount > 0) {
         row.innerHTML = rowHTML;
         tableBody.appendChild(row);
     }
-}
-function styleActiveCell(selectElement) {
-    if (selectElement.value !== "") {
-        selectElement.classList.add("has-value");
-    } else {
-        selectElement.classList.remove("has-value");
-    }
+
+    document.querySelectorAll(".matrix-select").forEach(select => {
+        if (select.value !== "") {
+            styleActiveCell(select);
+        }
+    });
 }
 
+function styleActiveCell(selectElement) {
+    selectElement.classList.remove("has-value", "val-1", "val-2", "val-3");
+
+    if (selectElement.value !== "") {
+        selectElement.classList.add("has-value");
+        selectElement.classList.add(`val-${selectElement.value}`);
+    }
+}

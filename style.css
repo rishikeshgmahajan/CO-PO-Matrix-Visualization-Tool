@@ -369,14 +369,15 @@ html, body {
     background: transparent;
 }
 
-/* --- Header Layout --- */
 .mapping-matrix-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: var(--space-sm, 12px);
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 12px;
+    max-width: calc(100vw - 465px);
+    width: 100%;
 }
 .mapping-matrix-header h3 {
     color: var(--color-primary-active, #0056b3);
@@ -384,29 +385,34 @@ html, body {
     font-weight: var(--fw-bold, 700);
     font-size: 1.1rem;
 }
-.mapping-matrix-header p {
-    color: var(--color-text-secondary, #666);
-    font-size: 0.9rem;
-    margin: 0;
-    background: var(--color-surface-hover, #f8f9fa);
-    padding: 4px 12px;
-    border-radius: var(--radius-lg, 6px);
-    border: 1px solid var(--color-border, #e0e0e0);
+.matrix-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+.mapping-matrix-header .btn {
+    max-height: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 14px;
+    font-size: calc(var(--fs-sm, 14px) - 1px);
+    font-weight: 600;
+    white-space: nowrap;
+    box-sizing: border-box;
 }
 
-/* --- Table Container --- */
 .matrix-table {
     width: 100%;
     max-height: calc(100vh - 270px);
     max-width: calc(100vw - 465px);
     overflow: auto;
-    /* Clean container border */
     border: 1px solid var(--color-border, #e0e0e0);
     border-radius: var(--radius-lg, 8px);
     background-color: var(--color-surface, #ffffff); 
 }
 
-/* --- Base Table --- */
 .mapping-matrix {
     width: 100%;
     border-collapse: separate;
@@ -416,7 +422,6 @@ html, body {
     font-family: var(--font-body, system-ui, sans-serif); 
 }
 
-/* --- Table Headers (Enforced uniform 1px lines) --- */
 .mapping-matrix th {
     position: sticky;
     top: 0;
@@ -427,23 +432,19 @@ html, body {
     padding: 12px 10px;
     white-space: nowrap;
     font-family: var(--font-headings, inherit);
-    
-    /* Removed blurry shadow, used a sharp 1px bottom and right border layout */
     border: none;
     box-shadow: inset -1px -1px 0 var(--color-border, #e0e0e0);
 }
 
-/* Sticky Header Row Offsets */
 .mapping-matrix tr:first-child th {
     top: 0;
     z-index: 15;
 }
 .mapping-matrix tr:nth-child(2) th {
-    top: 42px; /* Ensure this matches your exact Row 1 height */
+    top: 42px;
     z-index: 15;
 }
 
-/* Top-Left Corner Cell (Fixed thick shadow to crisp 1px) */
 .mapping-matrix th.col-co-heading {
     z-index: 20 !important;
     left: 0;
@@ -459,26 +460,21 @@ html, body {
     color: var(--color-secondary-active, #0369a1);
 }
 
-/* --- Table Body Cells --- */
 .mapping-matrix td {
     padding: 8px;
     vertical-align: middle;
     border: none;
-    /* Clean uniform 1px lines for data cells */
     box-shadow: inset -1px -1px 0 var(--color-border, #e0e0e0);
 }
 
-/* --- Sticky First Column (Fixed blurry shadow to crisp 1px) --- */
 .mapping-matrix .sticky-col {
     position: sticky;
     left: 0;
     background-color: var(--color-surface, #ffffff) !important;
     z-index: 5;
-    /* Sharp 1px outline prevents stacking/doubling appearance */
     box-shadow: inset -1px -1px 0 var(--color-border, #e0e0e0);
 }
 
-/* Row Hover States */
 .mapping-matrix tbody tr:hover {
     background-color: var(--color-surface-hover, #f8f9fa) !important;
 }
@@ -528,17 +524,33 @@ html, body {
     border-color: var(--color-primary-active, #0056b3);
 }
 
-.matrix-select.has-value {
-    background-color: var(--color-success-soft, #d1fae5) !important;
-    border-color: var(--color-success-border, #10b981) !important;
-    color: var(--color-success, #047857) !important;
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23047857' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+.matrix-select.val-1 {
+    background-color: var(--color-error-border) !important;
+    border-color: var(--color-error) !important;
+    color: var(--color-error-text) !important;
+}
+
+.matrix-select.val-2 {
+    background-color: var(--color-warning-border) !important;
+    border-color: var(--color-warning) !important;
+    color: var(--color-warning-text) !important;
+}
+
+.matrix-select.val-3 {
+    background-color: var(--color-success-border) !important;
+    border-color: var(--color-success) !important;
+    color: var(--color-success-text) !important;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
 }
 
 .matrix-select option {
     background-color: var(--color-surface, #fff);
     color: var(--color-text-primary, #333);
     font-weight: var(--fw-bold, 600);
+}
+.matrix-placeholder {
+    color: var(--color-text-secondary, #666);
+    font-style: italic;
 }
 
 .tab-headers {
@@ -651,33 +663,49 @@ html, body {
     .logo-main { height: 40px; }
     .logo-trust { height: 45px; }
     .hide-on-mobile { display: none; }
-
+    .mapping-matrix-header {
+        max-width: none; 
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    .matrix-actions {
+        width: 100%;
+        justify-content: flex-start;
+        gap: 8px;
+    }
+    .matrix-actions .btn {
+        flex: 1;
+        text-align: center;
+    }
     .matrix-container {
         flex-direction: column;
     }
     .outcome-entry{
         flex: 0 1 auto;
     }
-    
     .outcome-mapping {
         flex: 1 1 auto;
+    }
+    .matrix-table {
+        max-width: none;
+        overflow: auto;
     }
     #co-mapping, #po-mapping, #pso-mapping {
         max-height: 800px;
         overflow-y: auto;
     }
-
 }
 
 @media (max-width: 1184px) {
     .matrix-section {
-    width: 100%;
-    height: calc(100vh - 255px);
-    max-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    padding: 0.625rem 0.875rem;
-    background-color: var(--color-background);
-    box-sizing: border-box;
+        width: 100%;
+        height: calc(100vh - 255px);
+        max-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        padding: 0.625rem 0.875rem;
+        background-color: var(--color-background);
+        box-sizing: border-box;
     }
 }

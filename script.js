@@ -30,7 +30,7 @@ function addCO() {
                                 <div class='o-header'>
                                     <span class='o-title'>CO ${coCount}</span>
                                 </div>
-                                <textarea class='form-control' placeholder='Enter CO description...'></textarea>
+                                <textarea class='form-inp' placeholder='Enter CO description...'></textarea>
                             </div>`;
     document.getElementById("co-mapping-list").insertAdjacentHTML("beforeend", coBoxHTML);
     document.getElementById("co-count").textContent = coCount;
@@ -43,7 +43,7 @@ function addPO() {
                                 <div class='o-header'>
                                     <span class='o-title'>PO ${poCount}</span>
                                 </div>
-                                <textarea class='form-control' placeholder='Enter PO description...'></textarea>
+                                <textarea class='form-inp' placeholder='Enter PO description...'></textarea>
                             </div>`;
     document.getElementById("po-mapping-list").insertAdjacentHTML("beforeend", poBoxHTML);
     document.getElementById("po-count").textContent = poCount;
@@ -56,7 +56,7 @@ function addPSO() {
                                 <div class='o-header'>
                                     <span class='o-title'>PSO ${psoCount}</span>
                                 </div>
-                                <textarea class='form-control' placeholder='Enter PSO description...'></textarea>
+                                <textarea class='form-inp' placeholder='Enter PSO description...'></textarea>
                             </div>`;
     document.getElementById("pso-mapping-list").insertAdjacentHTML("beforeend", psoBoxHTML);
     document.getElementById("pso-count").textContent = psoCount;

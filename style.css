@@ -369,7 +369,7 @@ html, body {
     background: transparent;
 }
 
-
+/* --- Header Layout --- */
 .mapping-matrix-header {
     display: flex;
     justify-content: space-between;
@@ -394,17 +394,19 @@ html, body {
     border: 1px solid var(--color-border, #e0e0e0);
 }
 
+/* --- Table Container --- */
 .matrix-table {
     width: 100%;
     max-height: calc(100vh - 270px);
     max-width: calc(100vw - 465px);
     overflow: auto;
+    /* Clean container border */
     border: 1px solid var(--color-border, #e0e0e0);
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-lg, 8px);
     background-color: var(--color-surface, #ffffff); 
-    box-shadow: var(--shadow-sm);
 }
 
+/* --- Base Table --- */
 .mapping-matrix {
     width: 100%;
     border-collapse: separate;
@@ -414,6 +416,7 @@ html, body {
     font-family: var(--font-body, system-ui, sans-serif); 
 }
 
+/* --- Table Headers (Enforced uniform 1px lines) --- */
 .mapping-matrix th {
     position: sticky;
     top: 0;
@@ -422,27 +425,30 @@ html, body {
     color: var(--color-text-primary, #333);
     font-weight: var(--fw-bold, 600);
     padding: 12px 10px;
-    border-bottom: 1px solid var(--color-border, #e0e0e0);
-    border-right: 1px solid var(--color-border, #e0e0e0);
     white-space: nowrap;
     font-family: var(--font-headings, inherit);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    
+    /* Removed blurry shadow, used a sharp 1px bottom and right border layout */
+    border: none;
+    box-shadow: inset -1px -1px 0 var(--color-border, #e0e0e0);
 }
 
+/* Sticky Header Row Offsets */
 .mapping-matrix tr:first-child th {
     top: 0;
     z-index: 15;
 }
 .mapping-matrix tr:nth-child(2) th {
-    top: 42px;
+    top: 42px; /* Ensure this matches your exact Row 1 height */
     z-index: 15;
 }
 
+/* Top-Left Corner Cell (Fixed thick shadow to crisp 1px) */
 .mapping-matrix th.col-co-heading {
     z-index: 20 !important;
     left: 0;
     background-color: var(--color-surface, #ffffff) !important;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.06);
+    box-shadow: inset -1px -1px 0 var(--color-border, #e0e0e0);
 }
 
 .mapping-matrix th.po-heading {
@@ -453,12 +459,26 @@ html, body {
     color: var(--color-secondary-active, #0369a1);
 }
 
+/* --- Table Body Cells --- */
 .mapping-matrix td {
     padding: 8px;
-    border-bottom: 1px solid var(--color-border, #e0e0e0);
-    border-right: 1px solid var(--color-border, #e0e0e0);
     vertical-align: middle;
+    border: none;
+    /* Clean uniform 1px lines for data cells */
+    box-shadow: inset -1px -1px 0 var(--color-border, #e0e0e0);
 }
+
+/* --- Sticky First Column (Fixed blurry shadow to crisp 1px) --- */
+.mapping-matrix .sticky-col {
+    position: sticky;
+    left: 0;
+    background-color: var(--color-surface, #ffffff) !important;
+    z-index: 5;
+    /* Sharp 1px outline prevents stacking/doubling appearance */
+    box-shadow: inset -1px -1px 0 var(--color-border, #e0e0e0);
+}
+
+/* Row Hover States */
 .mapping-matrix tbody tr:hover {
     background-color: var(--color-surface-hover, #f8f9fa) !important;
 }
@@ -466,17 +486,9 @@ html, body {
     background-color: var(--color-surface-hover, #f8f9fa) !important;
 }
 
+/* Zebra Striping */
 .mapping-matrix tbody tr:nth-child(even) {
     background-color: var(--color-background, #fafafa);
-}
-
-.mapping-matrix .sticky-col {
-    position: sticky;
-    left: 0;
-    background-color: var(--color-surface, #ffffff) !important;
-    z-index: 5;
-    border-right: 2px solid var(--color-border, #e0e0e0) !important; /* Thicker border to separate */
-    box-shadow: 2px 0 5px -2px rgba(0,0,0,0.05); /* Right shadow for depth */
 }
 .mapping-matrix tbody tr:nth-child(even) .sticky-col {
     background-color: var(--color-background, #fafafa) !important;
@@ -488,6 +500,7 @@ html, body {
     color: var(--color-primary-active, #0056b3);
 }
 
+/* --- Select Dropdown UI --- */
 .matrix-select {
     width: 100%;
     min-width: 50px;
@@ -511,14 +524,8 @@ html, body {
     background-size: 14px;
 }
 
-.matrix-select:hover {
+.matrix-select:hover, .matrix-select:focus {
     border-color: var(--color-primary-active, #0056b3);
-    box-shadow: 0 0 0 2px rgba(0, 86, 179, 0.1);
-}
-
-.matrix-select:focus {
-    border-color: var(--color-primary-active, #0056b3);
-    box-shadow: 0 0 0 2px rgba(0, 86, 179, 0.2);
 }
 
 .matrix-select.has-value {

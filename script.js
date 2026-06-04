@@ -30,7 +30,7 @@ function addCO() {
                                 <div class='o-header'>
                                     <span class='o-title'>CO ${coCount}</span>
                                 </div>
-                                <textarea class='form-inp' placeholder='Enter CO description...'></textarea>
+                                <textarea id='co-description-${coCount}' class='form-inp' placeholder='Enter CO description...'></textarea>
                             </div>`;
     document.getElementById("co-mapping-list").insertAdjacentHTML("beforeend", coBoxHTML);
     document.getElementById("co-count").textContent = coCount;
@@ -43,7 +43,7 @@ function addPO() {
                                 <div class='o-header'>
                                     <span class='o-title'>PO ${poCount}</span>
                                 </div>
-                                <textarea class='form-inp' placeholder='Enter PO description...'></textarea>
+                                <textarea id='po-description-${poCount}' class='form-inp' placeholder='Enter PO description...'></textarea>
                             </div>`;
     document.getElementById("po-mapping-list").insertAdjacentHTML("beforeend", poBoxHTML);
     document.getElementById("po-count").textContent = poCount;
@@ -56,7 +56,7 @@ function addPSO() {
                                 <div class='o-header'>
                                     <span class='o-title'>PSO ${psoCount}</span>
                                 </div>
-                                <textarea class='form-inp' placeholder='Enter PSO description...'></textarea>
+                                <textarea id='pso-description-${psoCount}' class='form-inp' placeholder='Enter PSO description...'></textarea>
                             </div>`;
     document.getElementById("pso-mapping-list").insertAdjacentHTML("beforeend", psoBoxHTML);
     document.getElementById("pso-count").textContent = psoCount;
@@ -95,7 +95,7 @@ function matrixBox() {
     const tableHeadRow2 = document.getElementById("matrixHeadRow2");
     const tableBody = document.getElementById("matrixBody");
 
-    if(!tableHeadRow1 || !tableHeadRow2 || !tableBody) return;
+    if (!tableHeadRow1 || !tableHeadRow2 || !tableBody) return;
 
     const savedValues = {};
     document.querySelectorAll(".matrix-select").forEach(select => {
@@ -117,9 +117,11 @@ function matrixBox() {
         poHeader.innerText = "Program Outcomes (POs)";
         tableHeadRow1.appendChild(poHeader);
 
+        let poHtmlString = "";
         for (let i = 1; i <= poCount; i++) {
-            tableHeadRow2.innerHTML += `<th>PO${i}</th>`;
+            poHtmlString += `<th id="po-th-${i}">PO${i}</th>`;
         }
+        tableHeadRow2.innerHTML += poHtmlString;
     }
     
     if (psoCount > 0) {
@@ -129,9 +131,11 @@ function matrixBox() {
         psoHeader.innerText = "Program Specific Outcomes (PSOs)";
         tableHeadRow1.appendChild(psoHeader);
 
+        let psoHtmlString = "";
         for (let i = 1; i <= psoCount; i++) {
-            tableHeadRow2.innerHTML += `<th>PSO${i}</th>`;
+            psoHtmlString += `<th id="pso-th-${i}">PSO${i}</th>`;
         }
+        tableHeadRow2.innerHTML += psoHtmlString;
     }
     
     const totalColumns = poCount + psoCount;
@@ -140,7 +144,7 @@ function matrixBox() {
         const row = document.createElement("tr");
 
         let rowHTML = `
-            <td class="sticky-col co-label-cell">
+            <td class="sticky-col co-label-cell" id="co-td-${r}">
                 <strong>CO ${r}</strong>
             </td>
         `;
@@ -164,7 +168,35 @@ function matrixBox() {
         row.innerHTML = rowHTML;
         tableBody.appendChild(row);
     }
+
+    for (let i = 1; i <= poCount; i++) {
+        tippy(`#po-th-${i}`, { 
+            onShow(instance) {
+                let currentText = document.getElementById(`po-description-${i}`).value;
+                instance.setContent(currentText || `PO ${i} not entered.`);
+            }
+        });
+    }
+
+    for (let i = 1; i <= psoCount; i++) {
+        tippy(`#pso-th-${i}`, { 
+            onShow(instance) {
+                let currentText = document.getElementById(`pso-description-${i}`).value;
+                instance.setContent(currentText || `PSO ${i} not entered.`);
+            }
+        });
+    }
+
+    for (let r = 1; r <= coCount; r++) {
+        tippy(`#co-td-${r}`, { 
+            onShow(instance) {
+                let currentText = document.getElementById(`co-description-${r}`).value;
+                instance.setContent(currentText || `CO ${r} not entered.`);
+            }
+        });
+    }
 }
+
 function styleActiveCell(selectElement) {
     selectElement.classList.remove("val-1", "val-2", "val-3");
 

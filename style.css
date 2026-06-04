@@ -379,12 +379,7 @@ html, body {
     max-width: calc(100vw - 465px);
     width: 100%;
 }
-.mapping-matrix-header h3 {
-    color: var(--color-primary-active, #0056b3);
-    margin-bottom: 0;
-    font-weight: var(--fw-bold, 700);
-    font-size: 1.1rem;
-}
+
 .matrix-actions {
     display: flex;
     gap: 8px;
@@ -482,7 +477,6 @@ html, body {
     background-color: var(--color-surface-hover, #f8f9fa) !important;
 }
 
-/* Zebra Striping */
 .mapping-matrix tbody tr:nth-child(even) {
     background-color: var(--color-background, #fafafa);
 }
@@ -490,13 +484,19 @@ html, body {
     background-color: var(--color-background, #fafafa) !important;
 }
 
-.col-co-heading, .co-label-cell {
+.col-co-heading {
     min-width: 100px;
     font-weight: var(--fw-bold, 600);
-    color: var(--color-primary-active, #0056b3);
+    font-family: var(--font-headings, inherit);
+    color: var(--color-text-primary, #333);
+}
+.co-label-cell {
+    min-width: 100px;
+    font-weight: var(--fw-semibold, 500);
+    font-family: var(--font-headings, inherit);
+    color: var(--color-text-primary, #333);
 }
 
-/* --- Select Dropdown UI --- */
 .matrix-select {
     width: 100%;
     min-width: 50px;
@@ -523,26 +523,24 @@ html, body {
 .matrix-select:hover, .matrix-select:focus {
     border-color: var(--color-primary-active, #0056b3);
 }
-
 .matrix-select.val-1 {
-    background-color: var(--color-error-border) !important;
-    border-color: var(--color-error) !important;
+    background-color: var(--color-error-soft) !important;
+    border-color: var(--color-error-border) !important;
     color: var(--color-error-text) !important;
+    border: 1px solid var(--color-error-text) !important;
 }
-
 .matrix-select.val-2 {
-    background-color: var(--color-warning-border) !important;
-    border-color: var(--color-warning) !important;
+    background-color: var(--color-warning-soft) !important;
+    border-color: var(--color-warning-border) !important;
     color: var(--color-warning-text) !important;
+    border: 1px solid var(--color-warning-text) !important;
 }
-
 .matrix-select.val-3 {
-    background-color: var(--color-success-border) !important;
-    border-color: var(--color-success) !important;
+    background-color: var(--color-success-soft) !important;
+    border-color: var(--color-success-border) !important;
     color: var(--color-success-text) !important;
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    border: 1px solid var(--color-success-text) !important;
 }
-
 .matrix-select option {
     background-color: var(--color-surface, #fff);
     color: var(--color-text-primary, #333);
@@ -708,19 +706,4 @@ html, body {
         background-color: var(--color-background);
         box-sizing: border-box;
     }
-}
-.matrix-select.val-1 {
-    background-color: var(--color-error-soft) !important;
-    border-color: var(--color-error-border) !important;
-    color: var(--color-error-text) !important;
-}
-.matrix-select.val-2 {
-    background-color: var(--color-warning-soft) !important;
-    border-color: var(--color-warning-border) !important;
-    color: var(--color-warning-text) !important;
-}
-.matrix-select.val-3 {
-    background-color: var(--color-success-soft) !important;
-    border-color: var(--color-success-border) !important;
-    color: var(--color-success-text) !important;
 }

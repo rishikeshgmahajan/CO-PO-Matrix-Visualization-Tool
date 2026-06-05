@@ -210,5 +210,56 @@ function styleActiveCell(selectElement) {
         }
     }
 }
+function exportCSV{
+    const COdscp = [];
+    for(let i=1; i<=coCount; i++){
+        const point = document.getElementById('co-description-${i}');
+        COdscp.push(point ? point.value.replace(/)/g, '""') : "");
+    }
+    const POdscp = [];
+    for(let i=1; i<=poCount; i++){
+        const point = document.getElementById('po-description-${i}');
+        POdscp.push(point ? point.value.replace(/)/g, '""') : "");
+    }
+    const PSOdscp = [];
+    for(let i=1; i<=psoCount; i++){
+        const point = document.getElementById('pso-description-${i}');
+        PSOdscp.push(point ? point.value.replace(/)/g, '""') : "");
+    }
+    const csvRow = [];
+    let row1 = 'CO, ""';
+    if(poCount>0){
+        row1 += 'PO"${matchCommas(poCount-1)';
+    } 
+    if(psoCount>0){
+        row1 += 'PSO"${matchCommas(psoCount-1)';
+    }
+    csvRow.push(row1);
 
+    let row2 = '"outcome","description"';
+    for(let i=0; i<= poCount; i++) row2 += ',"PO${i}"';
+    for(let i=0; i<= psoCount; i++) row2 += ',"PSO${i}"';
+    csvRows.push(row2);
+
+    const matrixPoints = document.querySelectorAll("#matrixBody tr");
+    for(let r=0; r<coCount; r++){
+        let coCode = '"CO ${r+1}"';
+        let coDesc = `"${COdscp[r]}"`;
+        let matrixCellsData = "";
+
+        if (matrixPoints[r]) {
+            const dropdowns = matrixRows[r].querySelectorAll(".matrix-select");
+            dropdowns.forEach(select => {
+                matrixCellsData += `,"${select.value || "-"}"`; 
+            });
+        }
+        csvRows.push(`${coCode},${coDesc}${matrixCellsData}`);
+    }
+    
+
+    }
+    
+
+
+}
 

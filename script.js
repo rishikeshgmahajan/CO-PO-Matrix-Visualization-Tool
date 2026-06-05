@@ -210,7 +210,7 @@ function styleActiveCell(selectElement) {
         }
     }
 }
-function exportCSV{
+function exportCSV() {
     const COdscp = [];
     for(let i=1; i<=coCount; i++){
         const point = document.getElementById('co-description-${i}');
@@ -255,11 +255,7 @@ function exportCSV{
         }
         csvRows.push(`${coCode},${coDesc}${matrixCellsData}`);
     }
-    
-
-    }
-    
-
-
 }
+
+    
 

@@ -120,8 +120,13 @@
                 <div class="mapping-matrix-header">
                     <h3></h3>
                     <div class="matrix-actions">
-                        <button class="btn btn-primary"><img class="action-btn-icon" src="images/importCsv.png" alt="Import CSV">  Import CSV</button>
-                        <button class="btn btn-primary" onclick="exportMatrixToCSV()"><img class="action-btn-icon" src="images/exportCsv.png" alt="Export CSV">  Export CSV</button>
+                        <input type="file" id="importCsvInput" accept=".csv" style="display: none;" onchange="importCSV(event)">
+                        <button class="btn btn-primary" onclick="document.getElementById('importCsvInput').click()">
+                            <img class="action-btn-icon" src="images/importCsv.png" alt="Import CSV"> Import CSV
+                        </button>
+                        <button class="btn btn-primary" onclick="exportCSV()">
+                            <img class="action-btn-icon" src="images/exportCsv.png" alt="Export CSV"> Export CSV
+                        </button>
                     </div>
                 </div>
 
@@ -143,7 +148,5 @@
     </section>
     
 </body>
-
-    <script src="script.js" defer></script>
-
+<script src="script.js" defer></script>
 </html>

@@ -251,7 +251,7 @@ html, body {
     color: #a30000; 
 }
 .logo {
-    height: 30px;
+    height: 55px;
     width: auto;
     display: block;
 }
@@ -280,13 +280,13 @@ html, body {
 }
 .sidebar-title {
     color: #ffffff;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: bold;
 }
 .sidebar-close-btn {
     color: #aaaaaa;
     text-decoration: none;
-    font-size: 35px;
+    font-size: 55px;
     font-weight: bold;
     line-height: 1;
 }
@@ -302,7 +302,7 @@ html, body {
 .sidebar-menu li a {
     color: #dddddd;
     text-decoration: none;
-    font-size: 12px;
+    font-size: 20px;
     display: block;
     padding: 10px 12px;
     border-radius: 4px;

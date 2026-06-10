@@ -251,7 +251,7 @@ html, body {
     color: #a30000; 
 }
 .logo {
-    height: 55px;
+    height: 70px;
     width: auto;
     display: block;
 }
@@ -706,4 +706,25 @@ html, body {
         background-color: var(--color-background);
         box-sizing: border-box;
     }
+}
+.avg-row{
+    background-color: var(  --color-error-border) !important;
+    border-top: 2px solid var(--color-border) !important;
+}
+.mapping-matrix td.avg-label-cell {
+    font-weight: var(--fw-extrabold) !important;
+    color: var(--color-primary-active) !important;
+    text-transform: uppercase;
+    font-size: var(--fs-sm);
+    background-color: var(--color-error-border) !important;
+    box-shadow: inset -1px -1px 0 var(--color-text-primary);
+}
+.mapping-matrix td.avg-value-cell {
+    font-family: var(--font-body);
+    font-weight: var(--fw-extrabold) !important;
+    font-size: var(--fs-base);
+    color: var(--color-text-primary);
+    background-color: var(  --color-error-border);
+    padding: 10px;
+    box-shadow: inset -1px -1px 0 var(--color-border);
 }

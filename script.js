@@ -97,15 +97,6 @@ function matrixBox() {
 
     if (!tableHeadRow1 || !tableHeadRow2 || !tableBody) return;
 
-    const savedValues = {};
-    document.querySelectorAll(".matrix-select").forEach(select => {
-        const co = select.getAttribute("data-co");
-        const col = select.getAttribute("data-col");
-        if (co && col) {
-            savedValues[`${co}-${col}`] = select.value;
-        }
-    });
-
     tableHeadRow1.innerHTML = '<th rowspan="2" class="sticky-col col-co-heading">Course Outcomes</th>';
     tableHeadRow2.innerHTML = '';
     tableBody.innerHTML = '';
@@ -116,12 +107,9 @@ function matrixBox() {
         poHeader.className = "group-heading po-group-heading";
         poHeader.innerText = "Program Outcomes (POs)";
         tableHeadRow1.appendChild(poHeader);
-
-        let poHtmlString = "";
         for (let i = 1; i <= poCount; i++) {
-            poHtmlString += `<th id="po-th-${i}">PO${i}</th>`;
+            tableHeadRow2.innerHTML += `<th id="po-th-${i}">PO${i}</th>`;
         }
-        tableHeadRow2.innerHTML += poHtmlString;
     }
     
     if (psoCount > 0) {
@@ -130,19 +118,14 @@ function matrixBox() {
         psoHeader.className = "group-heading pso-group-heading";
         psoHeader.innerText = "Program Specific Outcomes (PSOs)";
         tableHeadRow1.appendChild(psoHeader);
-
-        let psoHtmlString = "";
         for (let i = 1; i <= psoCount; i++) {
-            psoHtmlString += `<th id="pso-th-${i}">PSO${i}</th>`;
+            tableHeadRow2.innerHTML += `<th id="pso-th-${i}">PSO${i}</th>`;
         }
-        tableHeadRow2.innerHTML += psoHtmlString;
     }
-    
     const totalColumns = poCount + psoCount;
 
     for (let r = 1; r <= coCount; r++) {
         const row = document.createElement("tr");
-
         let rowHTML = `
             <td class="sticky-col co-label-cell" id="co-td-${r}">
                 <strong>CO ${r}</strong>
@@ -150,21 +133,13 @@ function matrixBox() {
         `;
 
         for (let c = 1; c <= totalColumns; c++) {
-            const cellKey = `${r}-${c}`;
-            const savedVal = savedValues[cellKey] || "";
-
-            let valClass = "";
-            if (savedVal === "1") valClass = "val-1";
-            else if (savedVal === "2") valClass = "val-2";
-            else if (savedVal === "3") valClass = "val-3";
-
             rowHTML += `
                 <td>
-                    <select class="matrix-select ${valClass}" data-co="${r}" data-col="${c}" onchange="styleActiveCell(this)">
-                        <option value="" ${savedVal === "" ? "selected" : ""}>-</option>
-                        <option value="1" ${savedVal === "1" ? "selected" : ""}>1</option>
-                        <option value="2" ${savedVal === "2" ? "selected" : ""}>2</option>
-                        <option value="3" ${savedVal === "3" ? "selected" : ""}>3</option>
+                    <select class="matrix-select" onchange="styleActiveCell(this)">
+                        <option value="" selected>-</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
                     </select>
                 </td>
             `;
@@ -172,6 +147,18 @@ function matrixBox() {
 
         row.innerHTML = rowHTML;
         tableBody.appendChild(row);
+    }
+    if (coCount > 0) {
+        const avgRow = document.createElement("tr");
+        avgRow.id = "matrixAvgRow";
+        avgRow.className = "avg-summary-row";
+        
+        avgRow.innerHTML = `<td class="sticky-col avg-label-cell">Average</td>`;
+        
+        for (let j = 0; j < totalColumns; j++) {
+            avgRow.innerHTML += `<td class="avg-value-cell" id="avg-col-${j}">-</td>`;
+        }
+        tableBody.appendChild(avgRow);
     }
 
     for (let i = 1; i <= poCount; i++) {
@@ -200,6 +187,7 @@ function matrixBox() {
             }
         });
     }
+    calculateMatrixAverages();
 }
 
 function styleActiveCell(selectElement) {
@@ -214,8 +202,38 @@ function styleActiveCell(selectElement) {
             selectElement.classList.add("val-3");
         }
     }
+    calculateMatrixAverages();
 }
+function calculateMatrixAverages() {
+    const matrixRows = document.querySelectorAll("#matrixBody tr:not(.avg-summary-row)");
+    const totalColumns = poCount + psoCount;
 
+    if (totalColumns === 0) return;
+
+    const colSums = new Array(totalColumns).fill(0);
+    const colCounts = new Array(totalColumns).fill(0);
+    matrixRows.forEach(row => {
+        const dropdowns = row.querySelectorAll(".matrix-select");
+        dropdowns.forEach((select, colIndex) => {
+            const val = parseFloat(select.value);
+            if (!isNaN(val) && val > 0) {
+                colSums[colIndex] += val;
+                colCounts[colIndex] += 1;
+            }
+        });
+    });
+    for (let j = 0; j < totalColumns; j++) {
+        const cell = document.getElementById(`avg-col-${j}`);
+        if (cell) {
+            if (colCounts[j] > 0) {
+                const avg = colSums[j] / colCounts[j];
+                cell.innerText = Number(avg.toFixed(4)); 
+            } else {
+                cell.innerText = "-";
+            }
+        }
+    }
+}
 function importCSV(event) {
     const file = event.target.files[0];
     if (!file) return;
